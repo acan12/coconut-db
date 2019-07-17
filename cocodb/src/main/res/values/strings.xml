@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">cocodb</string>
+    <string name="database_package_name">app.cocodb.default</string>
+</resources>
