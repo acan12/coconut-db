@@ -1,7 +1,6 @@
 package com.beelabs.app.db.coconut;
 
 import android.annotation.SuppressLint;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -18,15 +17,18 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         Box box = new Box();
-        box.setId(Calendar.getInstance().getTimeInMillis());
+        box.setId(1);
         box.setName("dodoldl");
         box.setDesc("jawa");
 
-
+        App.getCocoDb().deleteRealm(Box.class);
         App.getCocoDb().saveToRealm(box);
-        int sizeCollection = App.getCocoDb().getCollectionRealm(Box.class).size();
-        int size = App.getCocoDb().findByContain("name", "dodo", Box.class).size();
-        Toast.makeText(this, size + "", Toast.LENGTH_SHORT).show();
+        int sizeBox = App.getCocoDb().getCollectionRealm(Box.class).size();
+
+        App.getCocoDb().deleteRealmBykey("id", 1, Box.class);
+        int sizeBox2 = App.getCocoDb().getCollectionRealm(Box.class).size();
+        Toast.makeText(this, "prev: " + sizeBox, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "aft: " + sizeBox2, Toast.LENGTH_SHORT).show();
     }
 
     @Override
