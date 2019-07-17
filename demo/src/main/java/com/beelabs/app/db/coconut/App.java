@@ -21,7 +21,6 @@ public class App extends BaseApp {
     public void onCreate() {
         super.onCreate();
         db = CocoDB.initDatabase(this);
-        Realm.init(this);
         setupBuilder(DaggerAppComponent.builder(), this);
     }
 

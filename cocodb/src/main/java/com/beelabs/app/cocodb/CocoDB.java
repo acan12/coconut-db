@@ -20,6 +20,10 @@ public class CocoDB {
         this.realm = realm;
     }
 
+    public Realm getRealm() {
+        return realm;
+    }
+
     public static CocoDB initDatabase(Context context) {
         if (realm == null) db = buildRealm(context);
         return db;
@@ -114,6 +118,15 @@ public class CocoDB {
             realm.delete(clazz);
             realm.commitTransaction();
         } catch (Exception e) {
+            Log.e("ERROR", e.getMessage());
+        }
+    }
+
+    public void deleteRealmBykey(String key, int val, Class clazz){
+        try{
+            realm.beginTransaction();
+            realm.where(clazz).equalTo(key, val).findAll().deleteAllFromRealm();
+        }catch (Exception e){
             Log.e("ERROR", e.getMessage());
         }
     }
