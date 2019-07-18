@@ -1,4 +1,4 @@
-# coconut-db
+# coconut DB
 Database interface to handle everything related with db transaction base on Realms
 
 ## Installation guide :
