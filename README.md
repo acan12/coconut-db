@@ -1,5 +1,5 @@
 # coconut DB
-Database interface to handle everything related with db transaction base on Realms
+Database interface to handle everything related with db transaction base on Realm
 
 ## Installation guide :
 
