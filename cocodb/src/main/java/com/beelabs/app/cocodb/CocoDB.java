@@ -115,18 +115,19 @@ public class CocoDB {
     public void deleteRealm(Class clazz) {
         try {
             realm.beginTransaction();
-            realm.delete(clazz);
+            realm.deleteAll();
             realm.commitTransaction();
         } catch (Exception e) {
             Log.e("ERROR", e.getMessage());
         }
     }
 
-    public void deleteRealmBykey(String key, int val, Class clazz){
-        try{
+    public void deleteRealmBykey(String key, int val, Class clazz) {
+        try {
             realm.beginTransaction();
-            realm.where(clazz).equalTo(key, val).findAll().deleteAllFromRealm();
-        }catch (Exception e){
+            RealmResults results = realm.where(clazz).equalTo(key, val).findAll();
+            results.deleteAllFromRealm();
+        } catch (Exception e) {
             Log.e("ERROR", e.getMessage());
         }
     }
