@@ -51,3 +51,17 @@ public class App extends BaseApp {
         super.onDestroy();
     }
 ```
+
+## How to use :
+```aidl
+    // delete
+    App.getCocoDb().deleteRealm(Box.class);
+    // getcollection from box model
+    RealmResults<Box> boxes = App.getCocoDb().getCollectionRealm(Box.class);
+    // save model into Realm
+    App.getCocoDb().saveToRealm(box);
+    Toast.makeText(this, "prev: " + boxes.size(), Toast.LENGTH_SHORT).show();
+    // delete by key value
+    App.getCocoDb().deleteRealmBykey("id", 1, Box.class);
+
+```
