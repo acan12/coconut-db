@@ -24,17 +24,17 @@ public class CocoDB {
         return realm;
     }
 
-    public static CocoDB initDatabase(Context context) {
-        if (realm == null) db = buildRealm(context);
+    public static CocoDB initDatabase(String databasePackageName, Context context) {
+        if (realm == null) db = buildRealm(databasePackageName, context);
         return db;
     }
 
-    private static CocoDB buildRealm(Context context) {
+    private static CocoDB buildRealm(String databasePackageName, Context context) {
         if (context == null) return null;
         Realm.init(context);
         RealmConfiguration realmConfig = new RealmConfiguration.Builder()
                 .deleteRealmIfMigrationNeeded()
-                .name(context.getResources().getString(R.string.database_package_name))
+                .name(databasePackageName)
                 .encryptionKey(CryptoUtil.Companion.encryptedKey64())
                 .build();
         // Get a Realm instance for this thread
