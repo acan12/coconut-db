@@ -141,6 +141,28 @@ public class CocoDB {
         }
     }
 
+    public void deleteRealmBykey(String key, Long val, Class clazz) {
+        try {
+            realm.beginTransaction();
+            RealmResults results = realm.where(clazz).equalTo(key, val).findAll();
+            results.deleteAllFromRealm();
+        } catch (Exception e) {
+            Log.e("ERROR", e.getMessage());
+        }
+    }
+
+
+    public void deleteRealmBykey(String key, String val, Class clazz) {
+        try {
+            realm.beginTransaction();
+            RealmResults results = realm.where(clazz).equalTo(key, val).findAll();
+            results.deleteAllFromRealm();
+        } catch (Exception e) {
+            Log.e("ERROR", e.getMessage());
+        }
+    }
+
+
     public static abstract class TransactionCallback {
 
         public RealmObject call() {
