@@ -45,16 +45,16 @@ public class CocoDB {
 
 
     public RealmObject saveToRealm(RealmObject object) {
+        return saveToRealm(object, null);
+    }
+
+    public RealmObject saveToRealm(RealmObject object, TransactionCallback callback) {
         realm.beginTransaction();
+
+        if (callback != null) callback.call();
         RealmObject obj = realm.copyToRealmOrUpdate(object);
         realm.commitTransaction();
         return obj;
-    }
-
-    public void doTransactionWithRealm(TransactionCallback callback) {
-        realm.beginTransaction();
-        callback.call();
-        realm.commitTransaction();
     }
 
     public RealmResults getCollectionRealm(Class clazz) {
