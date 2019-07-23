@@ -136,6 +136,7 @@ public class CocoDB {
             realm.beginTransaction();
             RealmResults results = realm.where(clazz).equalTo(key, val).findAll();
             results.deleteAllFromRealm();
+            realm.commitTransaction();
         } catch (Exception e) {
             Log.e("ERROR", e.getMessage());
         }
@@ -146,6 +147,7 @@ public class CocoDB {
             realm.beginTransaction();
             RealmResults results = realm.where(clazz).equalTo(key, val).findAll();
             results.deleteAllFromRealm();
+            realm.commitTransaction();
         } catch (Exception e) {
             Log.e("ERROR", e.getMessage());
         }
@@ -157,6 +159,7 @@ public class CocoDB {
             realm.beginTransaction();
             RealmResults results = realm.where(clazz).equalTo(key, val).findAll();
             results.deleteAllFromRealm();
+            realm.commitTransaction();
         } catch (Exception e) {
             Log.e("ERROR", e.getMessage());
         }
