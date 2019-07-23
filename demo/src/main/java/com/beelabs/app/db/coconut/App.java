@@ -20,7 +20,7 @@ public class App extends BaseApp {
     @Override
     public void onCreate() {
         super.onCreate();
-        db = CocoDB.initDatabase(this);
+        db = CocoDB.initDatabase(getResources().getString(R.string.database_package_name), this);
         setupBuilder(DaggerAppComponent.builder(), this);
     }
 

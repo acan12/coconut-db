@@ -46,7 +46,7 @@ public class CocoDB {
 
     public RealmObject saveToRealm(RealmObject object) {
         realm.beginTransaction();
-        RealmObject obj = realm.copyToRealm(object);
+        RealmObject obj = realm.copyToRealmOrUpdate(object);
         realm.commitTransaction();
         return obj;
     }
